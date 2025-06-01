@@ -105,6 +105,7 @@ using UnityEngine.InputSystem;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
+        private bool rotateOnMove = true;
 
         private const float _threshold = 0.01f;
 
@@ -261,7 +262,10 @@ using UnityEngine.InputSystem;
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
+                if(rotateOnMove) {
+
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
             }
 
 
@@ -392,5 +396,10 @@ using UnityEngine.InputSystem;
         public void SetSensitivity(float newSensitivity)
         {
             Sensitivity = newSensitivity;
+        }
+
+        public void SetRotateOnMove(bool newRotateOnMove)
+        {
+            rotateOnMove = newRotateOnMove;
         }
     }

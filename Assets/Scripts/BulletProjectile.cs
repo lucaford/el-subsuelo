@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BulletProjectile : MonoBehaviour
+{
+    private Rigidbody rb;
+    [SerializeField] private float speed = 10f;
+    // Start is called before the first frame update
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
+        rb.velocity = transform.forward * speed;
+    }
+
+    // Update is called once per frame
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
+}

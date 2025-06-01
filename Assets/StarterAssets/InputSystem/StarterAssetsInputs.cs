@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
+		public bool shoot;
 		public bool sprint;
 		public bool aim;
 
@@ -38,6 +39,11 @@ using UnityEngine.InputSystem;
 			JumpInput(value.isPressed);
 		}
 
+		public void OnShoot(InputValue value)
+		{
+			ShootInput(value.isPressed);
+		}
+
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
@@ -63,6 +69,11 @@ using UnityEngine.InputSystem;
 		public void JumpInput(bool newJumpState)
 		{
 			jump = newJumpState;
+		}
+
+		public void ShootInput(bool newShoowState)
+		{
+			shoot = newShoowState;
 		}
 
 		public void SprintInput(bool newSprintState)
