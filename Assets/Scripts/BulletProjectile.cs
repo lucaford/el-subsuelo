@@ -17,9 +17,16 @@ public class BulletProjectile : MonoBehaviour
         rb.velocity = transform.forward * speed;
     }
 
-    // Update is called once per frame
-    private void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider coll)
     {
+        EnemyController enemy = coll.gameObject.GetComponent<EnemyController>();
+
+        if (enemy != null)
+        {
+            enemy.TakeDamage();
+        }
+
         Destroy(gameObject);
     }
 }
